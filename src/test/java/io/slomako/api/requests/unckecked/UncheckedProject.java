@@ -1,26 +1,24 @@
 package io.slomako.api.requests.unckecked;
 
 import io.restassured.response.Response;
-import io.slomako.api.models.NewProjectDescription;
-import io.slomako.api.models.User;
+import io.restassured.specification.RequestSpecification;
 import io.slomako.api.requests.CrudInterface;
-import io.slomako.api.spec.Specifications;
 
 import static io.restassured.RestAssured.given;
 
 public class UncheckedProject implements CrudInterface {
 
     private static final String PROJECT_ENDPOINT = "/app/rest/projects";
-    private final User user;
+    private final RequestSpecification spec;
 
-    public UncheckedProject(User user) {
-        this.user = user;
+    public UncheckedProject(RequestSpecification spec) {
+        this.spec = spec;
     }
 
     @Override
     public Response create(Object obj) {
         return given()
-                .spec(Specifications.getInstance().authSpec(user))
+                .spec(spec)
                 .body(obj)
                 .post(PROJECT_ENDPOINT);
     }
@@ -38,7 +36,7 @@ public class UncheckedProject implements CrudInterface {
     @Override
     public Response delete(String id) {
         return given()
-                .spec(Specifications.getInstance().authSpec(user))
+                .spec(spec)
                 .delete("PROJECT_ENDPOINT" + "/id:" + id);
     }
 }

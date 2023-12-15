@@ -1,24 +1,22 @@
 package io.slomako.api.requests.checked;
 
-import io.restassured.response.Response;
-import io.slomako.api.models.NewProjectDescription;
+import io.restassured.specification.RequestSpecification;
 import io.slomako.api.models.Project;
-import io.slomako.api.models.User;
 import io.slomako.api.requests.CrudInterface;
 import io.slomako.api.requests.unckecked.UncheckedProject;
 import org.apache.http.HttpStatus;
 
 public class CheckedProject implements CrudInterface {
 
-    private final User user;
+    private final RequestSpecification spec;
 
-    public CheckedProject(User user) {
-        this.user = user;
+    public CheckedProject(RequestSpecification spec) {
+        this.spec = spec;
     }
 
     @Override
     public Project create(Object obj) {
-        return new UncheckedProject(user)
+        return new UncheckedProject(spec)
                 .create(obj)
                 .then()
                 .assertThat().statusCode(HttpStatus.SC_OK)
@@ -37,7 +35,7 @@ public class CheckedProject implements CrudInterface {
 
     @Override
     public String delete(String id) {
-        return new UncheckedProject(user)
+        return new UncheckedProject(spec)
                 .delete(id)
                 .then().assertThat().statusCode(HttpStatus.SC_OK)
                 .extract().asString();
