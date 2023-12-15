@@ -3,7 +3,6 @@ package io.slomako.api.generators;
 import io.slomako.api.models.NewProjectDescription;
 import io.slomako.api.models.Project;
 import io.slomako.api.models.User;
-import org.testng.annotations.Test;
 
 public class TestDataGenerator {
 

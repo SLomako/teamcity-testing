@@ -15,5 +15,10 @@ public class RolesTest extends TestBaseApi {
                 .create(testData.getProject())
                 .then().assertThat().statusCode(HttpStatus.SC_UNAUTHORIZED)
                 .body(containsString("Authentication required"));
+
+        new UncheckedProject(Specifications.getInstance().authSpec(testData.getUser()))
+                .get(testData.getProject().getId())
+                .then().assertThat().statusCode(HttpStatus.SC_NOT_FOUND)
+                .body(containsString("No project found by locator 'count:1,id:" + testData.getProject().getId() + "'"));
     }
 }
