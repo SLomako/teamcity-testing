@@ -7,14 +7,14 @@ import io.slomako.api.requests.checked.CheckedUser;
 import io.slomako.api.spec.Specifications;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
+import java.util.Collections;
 
 public class BuildConfigurationTest extends TestBaseApi {
 
     @Test()
     void buildConfigurationTest() {
         testData.getUser().setRoles(Roles.builder()
-                .role(Arrays.asList(Role.builder()
+                .role(Collections.singletonList(Role.builder()
                         .roleId("SYSTEM_ADMIN")
                         .scope("g")
                         .build()))

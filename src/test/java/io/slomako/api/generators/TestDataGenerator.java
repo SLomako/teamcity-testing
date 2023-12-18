@@ -2,7 +2,6 @@ package io.slomako.api.generators;
 
 import io.slomako.api.models.*;
 
-import java.util.Arrays;
 import java.util.Collections;
 
 public class TestDataGenerator {
@@ -13,7 +12,7 @@ public class TestDataGenerator {
                     .password(RandomData.randomString())
                     .email(RandomData.randomString() + "@gmail.com")
                     .roles(Roles.builder()
-                            .role(Arrays.asList(Role.builder()
+                            .role(Collections.singletonList(Role.builder()
                                     .roleId("SYSTEM_ADMIN")
                                     .scope("g")
                                     .build()))
