@@ -42,4 +42,10 @@ public class Specifications {
         requestBuilder.setBaseUri("http://" + user.getUsername() + ":" + user.getPassword() + "@" + Config.getProperty("host"));
         return requestBuilder.build();
     }
+
+    public RequestSpecification superUserSpec() {
+        var requestBuilder = requestSpecBuilder();
+        requestBuilder.setBaseUri("http://:" + Config.getProperty("superUserToken") + "@" + Config.getProperty("host"));
+        return requestBuilder.build();
+    }
 }

@@ -1,17 +1,24 @@
 package io.slomako.api.generators;
 
-import io.slomako.api.models.NewProjectDescription;
-import io.slomako.api.models.Project;
-import io.slomako.api.models.User;
+import io.slomako.api.models.*;
+
+import java.util.Arrays;
+import java.util.Collections;
 
 public class TestDataGenerator {
 
     public TestData generate() {
-
-        var user = User.builder()
-                .username("admin")
-                .password("admin")
-                .build();
+         var user = User.builder()
+                    .username(RandomData.randomString())
+                    .password(RandomData.randomString())
+                    .email(RandomData.randomString() + "@gmail.com")
+                    .roles(Roles.builder()
+                            .role(Arrays.asList(Role.builder()
+                                    .roleId("SYSTEM_ADMIN")
+                                    .scope("g")
+                                    .build()))
+                            .build())
+                    .build();
 
         var newProjectDescription = NewProjectDescription.builder()
                 .parentProject(Project.builder().locator("_Root").build())
