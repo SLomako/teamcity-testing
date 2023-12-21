@@ -3,15 +3,14 @@ package io.slomako.api.requests.checked;
 import io.restassured.specification.RequestSpecification;
 import io.slomako.api.models.User;
 import io.slomako.api.requests.CrudInterface;
+import io.slomako.api.requests.Request;
 import io.slomako.api.requests.unckecked.UncheckedUser;
 import org.apache.http.HttpStatus;
 
-public class CheckedUser implements CrudInterface {
-
-    private final RequestSpecification spec;
+public class CheckedUser extends Request implements CrudInterface {
 
     public CheckedUser(RequestSpecification spec) {
-        this.spec = spec;
+        super(spec);
     }
 
     @Override

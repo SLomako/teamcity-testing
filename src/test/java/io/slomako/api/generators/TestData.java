@@ -1,5 +1,6 @@
 package io.slomako.api.generators;
 
+import io.slomako.api.models.BuildType;
 import io.slomako.api.models.NewProjectDescription;
 import io.slomako.api.models.User;
 import io.slomako.api.requests.unckecked.UncheckedProject;
@@ -14,9 +15,11 @@ public class TestData {
 
     private User user;
     private NewProjectDescription project;
+    private BuildType buildType;
 
     public void delete() {
         var spec = Specifications.getInstance().superUserSpec();
         new UncheckedProject(spec).delete(project.getId());
-        new UncheckedUser(spec).delete(user.getUsername());    }
+        new UncheckedUser(spec).delete(user.getUsername());
+    }
 }

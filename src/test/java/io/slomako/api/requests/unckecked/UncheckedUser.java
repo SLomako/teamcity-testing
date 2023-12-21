@@ -3,16 +3,16 @@ package io.slomako.api.requests.unckecked;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.slomako.api.requests.CrudInterface;
+import io.slomako.api.requests.Request;
 
 import static io.restassured.RestAssured.given;
 
-public class UncheckedUser implements CrudInterface {
+public class UncheckedUser extends Request implements CrudInterface {
 
     private final static String USER_ENDPOINT = "/app/rest/users";
-    private final RequestSpecification spec;
 
     public UncheckedUser(RequestSpecification spec) {
-        this.spec = spec;
+        super(spec);
     }
 
     @Override

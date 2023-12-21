@@ -11,10 +11,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class NewProjectDescription {
+public class BuildType {
 
-    private Project parentProject;
-    private String name;
     private String id;
-    private Boolean copyAllAssociatedSettings;
+    private String name;
+    private NewProjectDescription project;
+
 }

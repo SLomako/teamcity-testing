@@ -7,7 +7,7 @@ import org.apache.http.HttpStatus;
 
 public class AuthRequest {
 
-    private User user;
+    private final User user;
 
     public AuthRequest(User user) {
         this.user = user;
